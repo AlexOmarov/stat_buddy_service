@@ -2,11 +2,11 @@
 
 Service for backing up statistic subsystem.
 
-[![Java version](https://img.shields.io/static/v1?label=Java&message=17&color=blue)](https://sonarcloud.io/summary/new_code?id=AlexOmarov_stat_buddy_service)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=AlexOmarov_stat_buddy_service&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=AlexOmarov_stat_buddy_service)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=AlexOmarov_stat_buddy_service&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=AlexOmarov_stat_buddy_service)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=AlexOmarov_stat_buddy_service&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=AlexOmarov_stat_buddy_service)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=AlexOmarov_stat_buddy_service&metric=coverage)](https://sonarcloud.io/summary/new_code?id=AlexOmarov_stat_buddy_service)
+[![Java version](https://img.shields.io/static/v1?label=Java&message=17&color=blue)](https://sonarcloud.io/summary/new_code?id=stat_buddy_service)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=stat_buddy_service&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=stat_buddy_service)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=stat_buddy_service&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=stat_buddy_service)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=stat_buddy_service&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=stat_buddy_service)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=stat_buddy_service&metric=coverage)](https://sonarcloud.io/summary/new_code?id=stat_buddy_service)
 
 ## Table of Contents
 - [Features](#features)
