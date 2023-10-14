@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="1.0.2" use-changelog="false" last-position="0,0" last-zoom="1" max-obj-count="8"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<role name="stat_buddy_service">
+</role>
+
+<database name="stat_buddy_service_db" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="stat_buddy_service_schema" layers="0" rect-visible="true" fill-color="#e1e1e1">
+	<role name="stat_buddy_service"/>
+</schema>
+
+<table name="actor" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="stat_buddy_service_schema"/>
+	<role name="stat_buddy_service"/>
+	<position x="920" y="40"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="code" not-null="true">
+		<type name="varchar" length="512"/>
+	</column>
+	<constraint name="actor_code_unique" type="uq-constr" table="stat_buddy_service_schema.actor">
+		<columns names="code" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="actor_pk" type="pk-constr" table="stat_buddy_service_schema.actor">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="region" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="stat_buddy_service_schema"/>
+	<role name="stat_buddy_service"/>
+	<position x="360" y="160"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="code" not-null="true">
+		<type name="varchar" length="512"/>
+	</column>
+	<constraint name="region_pk" type="pk-constr" table="stat_buddy_service_schema.region">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="region_code_unique" type="uq-constr" table="stat_buddy_service_schema.region">
+		<columns names="code" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="actor_has_many_region" type="rel1n" layers="0"
+	 src-col-pattern="{st}_{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#ce816a"
+	 src-table="stat_buddy_service_schema.actor"
+	 dst-table="stat_buddy_service_schema.region"
+	 src-required="true" dst-required="false"/>
+
+<table name="stat_layer" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="stat_buddy_service_schema"/>
+	<role name="stat_buddy_service"/>
+	<position x="1420" y="1080"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="code" not-null="true">
+		<type name="varchar" length="512"/>
+	</column>
+	<column name="description" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="stat_layer_code_unique" type="uq-constr" table="stat_buddy_service_schema.stat_layer">
+		<columns names="code" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="stat_layer_pk" type="pk-constr" table="stat_buddy_service_schema.stat_layer">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="statistical_indicator" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="stat_buddy_service_schema"/>
+	<role name="stat_buddy_service"/>
+	<position x="920" y="680"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="code" not-null="true">
+		<type name="varchar" length="512"/>
+	</column>
+	<column name="description" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="statistical_indicator_pk" type="pk-constr" table="stat_buddy_service_schema.statistical_indicator">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="stat_layer_id" index="2"/>
+		<object name="unit_id" index="4"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="stat_layer_fk" index="1"/>
+		<object name="unit_fk" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="stat_layer_has_many_statistical_indicator" type="rel1n" layers="0"
+	 src-col-pattern="{st}_{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#76a7ea"
+	 src-table="stat_buddy_service_schema.stat_layer"
+	 dst-table="stat_buddy_service_schema.statistical_indicator"
+	 src-required="true" dst-required="false"/>
+
+<table name="unit" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="stat_buddy_service_schema"/>
+	<role name="stat_buddy_service"/>
+	<position x="420" y="1080"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="code" not-null="true">
+		<type name="varchar" length="512"/>
+	</column>
+	<column name="description" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="unit_code_unique" type="uq-constr" table="stat_buddy_service_schema.unit">
+		<columns names="code" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="unit_pk" type="pk-constr" table="stat_buddy_service_schema.unit">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="unit_has_many_statistical_indicator" type="rel1n" layers="0"
+	 src-col-pattern="{st}_{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#b19c3f"
+	 src-table="stat_buddy_service_schema.unit"
+	 dst-table="stat_buddy_service_schema.statistical_indicator"
+	 src-required="true" dst-required="false"/>
+
+<table name="period" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="stat_buddy_service_schema"/>
+	<role name="stat_buddy_service"/>
+	<position x="920" y="1080"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="code" not-null="true">
+		<type name="varchar" length="512"/>
+	</column>
+	<column name="description" not-null="true">
+		<type name="varchar" length="512"/>
+	</column>
+	<constraint name="code" type="uq-constr" table="stat_buddy_service_schema.period">
+		<columns names="code" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="period_pk" type="pk-constr" table="stat_buddy_service_schema.period">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="period_has_many_statistical_indicator" type="rel1n" layers="0"
+	 src-col-pattern="{st}_{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#11987d"
+	 src-table="stat_buddy_service_schema.period"
+	 dst-table="stat_buddy_service_schema.statistical_indicator"
+	 src-required="true" dst-required="false"/>
+
+<table name="region_indicator" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="stat_buddy_service_schema"/>
+	<role name="stat_buddy_service"/>
+	<position x="920" y="360"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="value" not-null="true">
+		<type name="varchar" length="512"/>
+	</column>
+	<constraint name="region_indicator_pk" type="pk-constr" table="stat_buddy_service_schema.region_indicator">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="region_id" index="1"/>
+		<object name="statistical_indicator_id" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="region_fk" index="1"/>
+		<object name="statistical_indicator_fk" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="region_has_many_region_indicator" type="rel1n" layers="0"
+	 src-col-pattern="{st}_{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#25cd43"
+	 src-table="stat_buddy_service_schema.region"
+	 dst-table="stat_buddy_service_schema.region_indicator"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-5.23629" y="-21.0739"/>
+	</label>
+</relationship>
+
+<relationship name="statistical_indicator_has_many_region_indicator" type="rel1n" layers="0"
+	 src-col-pattern="{st}_{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#0d62b4"
+	 src-table="stat_buddy_service_schema.statistical_indicator"
+	 dst-table="stat_buddy_service_schema.region_indicator"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-3.30709" y="-33.953"/>
+	</label>
+</relationship>
+
+</dbmodel>
