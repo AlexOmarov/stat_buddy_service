@@ -1,0 +1,148 @@
+# -------------------------- Versions ----------------------------
+[versions]
+# Kotlin
+kotiln="1.9.10"
+
+# Reactor
+reactor="3.5.11"
+
+# Hessian
+hessian="4.0.66"
+
+# Logging
+logstash-logback="7.4"
+
+# Spring
+spring-boot="3.1.3"
+spring-kafka="3.0.11"
+spring-boot-dm="1.1.3"
+
+# Micrometer
+micrometer-otel="1.1.6"
+micrometer-reactor="1.0.11"
+micrometer-tracing="1.1.6"
+otel-zipkin="1.31.0"
+
+# OpenApi
+openapi="2.2.0"
+
+# Kafka
+kafka="1.3.21"
+jackson="2.15.3"
+
+# Swagger
+swagger="2.2.16"
+
+# DB
+r2dbc_postgres="1.0.2.RELEASE"
+
+# Schedulers
+schedlock="5.8.0"
+
+# Publication
+sonarqube = "4.4.1.3373"
+detekt = "1.23.1"
+
+# Tests
+junit="5.10.0"
+testcontainers="1.19.1"
+mockito="5.1.0"
+awaitility="4.2.0"
+archunit="1.1.0"
+
+# Client APIs
+
+# Lint
+detekt-ktlint="1.23.1"
+# -------------------------- Versions ----------------------------
+
+
+# -------------------------- Libraries ---------------------------
+[libraries]
+
+# Kotlin
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core"}
+kotlin-coroutines-reactive = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive"}
+kotlin-coroutines-reactor = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactor"}
+kotlin-extensions = { module = "io.projectreactor.kotlin:reactor-kotlin-extensions"}
+kotlin-jackson = { module = "com.fasterxml.jackson.module:jackson-module-kotlin"}
+
+# Reactor
+reactor-core = { module = "io.projectreactor:reactor-core", version.ref="reactor" }
+
+# Spring
+spring-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux" }
+spring-starter-rsocket = { module = "org.springframework.boot:spring-boot-starter-rsocket" }
+spring-starter-security = { module = "org.springframework.security:spring-security-core" }
+spring-starter-security-rsocket = { module = "org.springframework.security:spring-security-rsocket" }
+spring-starter-kafka = { module = "org.springframework.kafka:spring-kafka", version.ref="spring-kafka" }
+spring-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
+spring-starter-cache = { module = "org.springframework.boot:spring-boot-starter-cache" }
+spring-starter-redis = { module = "org.springframework.boot:spring-boot-starter-data-redis" }
+spring-starter-r2dbc = { module = "org.springframework.boot:spring-boot-starter-data-r2dbc" }
+spring-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-starter-aop = { module = "org.springframework.boot:spring-boot-starter-aop" }
+
+spring-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+spring-starter-test-kafka = { module = "org.springframework.kafka:spring-kafka-test" }
+
+# Kafka
+kafka = { module = "io.projectreactor.kafka:reactor-kafka", version.ref = "kafka" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
+jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
+
+# Metrics
+micrometr = { module = "io.micrometer:micrometer-registry-prometheus" }
+micrometr-reactor = { module = "io.projectreactor:reactor-core-micrometer", version.ref="micrometer-reactor" }
+micrometr-tracing = { module = "io.micrometer:micrometer-tracing", version.ref="micrometer-tracing" }
+micrometr-tracing-brave = { module = "io.micrometer:micrometer-tracing-bridge-brave" }
+micrometr-tracing-otel = { module = "io.micrometer:micrometer-tracing-bridge-otel", version.ref="micrometer-otel" }
+otel-zipkin = { module = "io.opentelemetry:opentelemetry-exporter-zipkin", version.ref="otel-zipkin" }
+
+# Shedlock
+shedlock = { module = "net.javacrumbs.shedlock:shedlock-spring", version.ref = "schedlock" }
+shedlock-r2dbc = { module = "net.javacrumbs.shedlock:shedlock-provider-r2dbc", version.ref = "schedlock" }
+
+# DB
+flyway = { module = "org.flywaydb:flyway-core" }
+postgres = { module = "org.postgresql:postgresql" }
+postgres-r2dbc = { module = "org.postgresql:r2dbc-postgresql", version.ref = "r2dbc_postgres" }
+
+# Hessian
+hessian = { module = "com.caucho:hessian", version.ref="hessian"}
+
+# OpenApi
+openapi-webflux-ui = { module = "org.springdoc:springdoc-openapi-starter-webflux-ui", version.ref = "openapi" }
+swagger-annotations = { module = "io.swagger.core.v3:swagger-annotations", version.ref = "swagger" }
+
+# Tests
+junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
+junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+testcontainers-junit = { module = "org.testcontainers:junit-jupiter", version.ref = "testcontainers" }
+testcontainers-postgres = { module = "org.testcontainers:postgresql", version.ref = "testcontainers" }
+testcontainers-kafka = { module = "org.testcontainers:kafka", version.ref="testcontainers" }
+mockito = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito" }
+reactor-test = { module = "io.projectreactor:reactor-test", version.ref="reactor" }
+awaitility = { module = "org.awaitility:awaitility-kotlin", version.ref = "awaitility" }
+archunit = { module = "com.tngtech.archunit:archunit-junit5", version.ref="archunit" }
+
+# Logging
+logstash-logback = { module="net.logstash.logback:logstash-logback-encoder", version.ref="logstash-logback" }
+
+# Lint
+detekt-ktlint = { module="io.gitlab.arturbosch.detekt:detekt-formatting", version.ref="detekt-ktlint" }
+
+# -------------------------- Libraries ---------------------------
+
+
+# --------------------------- Plugins ----------------------------
+[plugins]
+
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-boot-dm = { id = "io.spring.dependency-management", version.ref = "spring-boot-dm" }
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotiln" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotiln" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+# --------------------------- Plugins ----------------------------
