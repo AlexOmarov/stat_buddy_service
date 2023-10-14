@@ -1,3 +1,0 @@
-contour:
-  database:
-    port: '5433'

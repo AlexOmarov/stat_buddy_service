@@ -3,10 +3,15 @@ services:
   stat_buddy_service:
     build: .
     container_name: stat_buddy_service
-    env_file:
-      - ./stat_buddy_app/src/main/resources/application-dev.yml
+    environment:
+      - 'spring.profiles.active=dev'
+      - 'DB_HOST=postgres'
     ports:
-      - "11000:11000"
+      - "8080:8080"
+    networks:
+      monitoring:
+        aliases:
+          - app
   postgres:
     image: 'postgres:latest'
     environment:
@@ -18,11 +23,19 @@ services:
       - '5433:5432'
     volumes:
       - pg_data:/var/lib/pgdata
+    networks:
+      monitoring:
+        aliases:
+          - postgres
 
   zipkin:
     image: 'openzipkin/zipkin:latest'
     ports:
       - '9411:9411'
+    networks:
+      monitoring:
+        aliases:
+          - zipkin
   grafana:
     image: grafana/grafana-enterprise
     container_name: grafana
@@ -35,6 +48,10 @@ services:
       - 'GF_SECURITY_ADMIN_PASSWORD=admin'
     volumes:
       - grafana_data:/var/lib/grafana
+    networks:
+      monitoring:
+        aliases:
+          - grafana
   prometheus:
     image: prom/prometheus
     ports:
@@ -42,8 +59,14 @@ services:
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/var/lib/prometheus
-
+    networks:
+      monitoring:
+        aliases:
+          - prometheus
 volumes:
   grafana_data: { }
   pg_data: { }
   prometheus_data: { }
+
+networks:
+  monitoring:
