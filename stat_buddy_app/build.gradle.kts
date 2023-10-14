@@ -140,8 +140,10 @@ jacoco {
 
 // Print total coverage to console
 tasks.register("coverage") {
+    description = "Prints total coverage"
+    group = JavaBasePlugin.VERIFICATION_GROUP
     doLast {
-        val testReportFile = project.file("${project.layout.buildDirectory}/reports/jacoco/test/jacocoTestReport.xml")
+        val testReportFile = project.file("${project.layout.buildDirectory.get().asFile}/reports/jacoco/test/jacocoTestReport.xml")
         if (testReportFile.exists()) {
             val str: String = testReportFile.readText().replace("<!DOCTYPE[^>]*>".toRegex(), "")
             val rootNode = javax.xml.parsers.DocumentBuilderFactory.newInstance().newDocumentBuilder()

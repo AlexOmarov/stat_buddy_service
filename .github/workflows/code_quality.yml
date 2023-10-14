@@ -44,4 +44,4 @@ jobs:
 
       - name: Scan
         run: |
-          ./gradlew sonar -D"sonar.host.url"="https://sonarcloud.io" -D"sonar.login"=${{ secrets.SONAR_TOKEN }} -D"sonar.projectKey"=${{ secrets.SONAR_PROJECT_KEY }} -D"sonar.organization"=${{ secrets.SONAR_ORG }}
+          ./gradlew sonar -D"sonar.host.url"="https://sonarcloud.io" -D"sonar.token"=${{ secrets.SONAR_TOKEN }} -D"sonar.projectKey"=${{ secrets.SONAR_PROJECT_KEY }} -D"sonar.organization"=${{ secrets.SONAR_ORG }}

@@ -113,7 +113,7 @@ Note, that by default container will run using `application-dev.yml`
 Для получения процента покрытия необходимо:
 ```
 .\gradlew test jacocoTestReport coverage
-.\gradlew sonar -D"sonar.host.url"="https://sonarcloud.io" -D"sonar.login"="YOUR_LOGIN" -D"sonar.projectKey"="KEY" -D"sonar.organization"="ORG" 
+.\gradlew sonar -D"sonar.host.url"="https://sonarcloud.io" -D"sonar.token"="YOUR_LOGIN" -D"sonar.projectKey"="KEY" -D"sonar.organization"="ORG" 
 ```
 Отчет по покрытию будет сгенерирован в `stat_buddy_app/build/report/jacoco`
 Кроме того, при вызове sonar с помощью gradle задачи сгенерированный detekt отчет будет добавлен к анализу.
