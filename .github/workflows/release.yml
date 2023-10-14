@@ -72,5 +72,5 @@ jobs:
           port: ${{ secrets.DEPLOY_PORT }}
           script: |
             sudo docker image rm decentboat/stat_buddy_service --force
-            sudo docker-compose -f ~/docker-compose-${{ SERVICE_NAME }}.yml up -d --force-recreate
+            sudo docker-compose -f ~/docker-compose-stat_buddy_service.yml up -d --force-recreate
             docker system prune
