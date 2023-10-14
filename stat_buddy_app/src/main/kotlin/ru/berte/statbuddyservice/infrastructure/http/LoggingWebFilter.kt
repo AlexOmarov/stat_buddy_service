@@ -17,7 +17,7 @@ class LoggingWebFilter : WebFilter {
 
     private val log = LoggerFactory.getLogger(LoggingResponseDecorator::class.java)
 
-    @Suppress("squid:S6508")
+    @Suppress("kotlin:S6508")
     override fun filter(exchange: ServerWebExchange, chain: WebFilterChain): Mono<Void> {
         if (
             exchange.request.uri.path.contains("swagger") ||

@@ -15,7 +15,7 @@ class LoggingResponseDecorator internal constructor(delegate: ServerHttpResponse
     ServerHttpResponseDecorator(delegate) {
     private val log = LoggerFactory.getLogger(LoggingResponseDecorator::class.java)
 
-    @Suppress("squid:S6508")
+    @Suppress("kotlin:S6508")
     override fun writeWith(body: Publisher<out DataBuffer>): Mono<Void> {
         return super.writeWith(
             Flux.from(body)
