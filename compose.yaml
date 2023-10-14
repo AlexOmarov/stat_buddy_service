@@ -1,27 +1,28 @@
+version: '3.8'
 services:
   stat_buddy_service:
     build: .
     container_name: stat_buddy_service
     env_file:
-      - ./src/main/resources/application-dev.yml
+      - ./stat_buddy_app/src/main/resources/application-dev.yml
     ports:
       - "11000:11000"
   postgres:
     image: 'postgres:latest'
     environment:
-      - 'POSTGRES_DB=stat_buddy_service'
-      - 'POSTGRES_PASSWORD=stat_buddy_service'
-      - 'POSTGRES_SCHEMA=stat_buddy_service'
-      - 'POSTGRES_USER=stat_buddy_service'
+      POSTGRES_DB: 'stat_buddy_service'
+      POSTGRES_PASSWORD: 'stat_buddy_service'
+      POSTGRES_SCHEMA: 'stat_buddy_service'
+      POSTGRES_USER: 'stat_buddy_service'
     ports:
-      - '5432'
+      - '5433:5432'
     volumes:
       - pg_data:/var/lib/pgdata
 
   zipkin:
     image: 'openzipkin/zipkin:latest'
     ports:
-      - '9411'
+      - '9411:9411'
   grafana:
     image: grafana/grafana-enterprise
     container_name: grafana
@@ -37,14 +38,10 @@ services:
   prometheus:
     image: prom/prometheus
     ports:
-      - 9090:9090
+      - "9090:9090"
     volumes:
-      - /config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/var/lib/prometheus
-    networks:
-      monitoring:
-        aliases:
-          - prometheus
 
 volumes:
   grafana_data: { }

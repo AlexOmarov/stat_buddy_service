@@ -1,4 +1,4 @@
-package ru.berte.stat_buddy_service
+package ru.berte.statbuddyservice
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -7,5 +7,6 @@ import org.springframework.boot.runApplication
 class StatBuddyServiceApplication
 
 fun main(args: Array<String>) {
+    @Suppress("SpreadOperator")
     runApplication<StatBuddyServiceApplication>(*args)
 }

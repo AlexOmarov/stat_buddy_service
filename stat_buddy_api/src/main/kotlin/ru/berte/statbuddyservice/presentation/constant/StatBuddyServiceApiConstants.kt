@@ -1,4 +1,4 @@
-package ru.berte.stat_buddy_service.presentation.constant
+package ru.berte.statbuddyservice.presentation.constant
 
 object StatBuddyServiceApiConstants {
     /**

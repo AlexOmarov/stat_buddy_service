@@ -1,7 +1,7 @@
 # -------------------------- Versions ----------------------------
 [versions]
 # Kotlin
-kotiln="1.9.10"
+kotiln="1.9.0"
 
 # Reactor
 reactor="3.5.11"
@@ -44,7 +44,7 @@ sonarqube = "4.4.1.3373"
 detekt = "1.23.1"
 
 # Tests
-junit="5.10.0"
+junit="5.9.0"
 testcontainers="1.19.1"
 mockito="5.1.0"
 awaitility="4.2.0"

@@ -23,14 +23,7 @@ sourceSets {
 }
 
 detekt {
-    config = files("$rootDir/detekt-config.yml")
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "17"
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-    }
+    config.setFrom(files("$rootDir/detekt-config.yml"))
 }
 
 publishing {

@@ -1,0 +1,71 @@
+contour:
+  http-port: ${HTTP_PORT:8080}
+  service-name: ${SERVICE_NAME:stat_buddy_service}
+  instance: ${HOSTNAME:unknown}
+  database:
+    host: ${DB_HOST:localhost}
+    port: ${DB_PORT:5432}
+    name: ${DB_DATABASE:stat_buddy_service}
+    schema: ${DB_DATABASE_SCHEMA:stat_buddy_service}
+    user: ${DB_USER_NAME:stat_buddy_service}
+    password: ${DB_PASSWORD:stat_buddy_service}
+
+cache:
+  default-time: 5m
+  default-heap-size: 100
+
+management:
+  health:
+    readinessState:
+      enabled: true
+    livenessState:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      group:
+        readiness:
+          include: r2dbc
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
+        add-additional-paths: true
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  tracing:
+    sampling:
+      probability: 1.0
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+spring:
+  main:
+    banner-mode: off
+  r2dbc:
+    url: 'r2dbc:postgresql://${contour.database.host}:${contour.database.port}/${contour.database.name}?schema=${contour.database.schema}'
+    username: '${contour.database.user}'
+    password: '${contour.database.password}'
+  flyway:
+    enabled: 'true'
+    url: 'jdbc:postgresql://${contour.database.host}:${contour.database.port}/${contour.database.name}'
+    user: '${spring.r2dbc.username}'
+    password: '${spring.r2dbc.password}'
+    default-schema: '${contour.database.schema}'
+  application:
+    name: '${contour.service-name}'
+
+logging:
+  config: classpath:logback/logback-spring.xml
+
+server:
+  port: '${contour.http-port}'
