@@ -48,7 +48,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: ${{ DOCKER_IMAGE_REPO_NAME }}
+          images: decentboat/stat_buddy_service
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -71,6 +71,6 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           port: ${{ secrets.DEPLOY_PORT }}
           script: |
-            sudo docker image rm ${{ DOCKER_IMAGE_REPO_NAME }} --force
+            sudo docker image rm decentboat/stat_buddy_service --force
             sudo docker-compose -f ~/docker-compose-${{ SERVICE_NAME }}.yml up -d --force-recreate
             docker system prune
