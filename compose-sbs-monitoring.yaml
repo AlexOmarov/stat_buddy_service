@@ -1,33 +1,5 @@
 version: '3.8'
 services:
-  stat_buddy_service:
-    build: .
-    container_name: stat_buddy_service
-    environment:
-      - 'spring.profiles.active=dev'
-      - 'DB_HOST=postgres'
-    ports:
-      - "8080:8080"
-    networks:
-      monitoring:
-        aliases:
-          - app
-  postgres:
-    image: 'postgres:latest'
-    environment:
-      POSTGRES_DB: 'stat_buddy_service'
-      POSTGRES_PASSWORD: 'stat_buddy_service'
-      POSTGRES_SCHEMA: 'stat_buddy_service'
-      POSTGRES_USER: 'stat_buddy_service'
-    ports:
-      - '5433:5432'
-    volumes:
-      - pg_data:/var/lib/pgdata
-    networks:
-      monitoring:
-        aliases:
-          - postgres
-
   zipkin:
     image: 'openzipkin/zipkin:latest'
     ports:
@@ -65,7 +37,6 @@ services:
           - prometheus
 volumes:
   grafana_data: { }
-  pg_data: { }
   prometheus_data: { }
 
 networks:
