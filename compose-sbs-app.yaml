@@ -7,6 +7,7 @@ services:
     environment:
       - 'spring.profiles.active=dev'
       - 'DB_HOST=postgres'
+      - 'ZIPKIN_HOST=http://zipkin:9411/api/v2/spans'
     ports:
       - "8080:8080"
     networks:

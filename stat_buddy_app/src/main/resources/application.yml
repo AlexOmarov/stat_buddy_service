@@ -10,10 +10,6 @@ contour:
     user: ${DB_USER_NAME:stat_buddy_service}
     password: ${DB_PASSWORD:stat_buddy_service}
 
-cache:
-  default-time: 5m
-  default-heap-size: 100
-
 management:
   health:
     readinessState:
@@ -40,6 +36,9 @@ management:
         http:
           server:
             requests: true
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_HOST:http://localhost:9411/api/v2/spans}
   tracing:
     sampling:
       probability: 1.0
@@ -66,6 +65,10 @@ spring:
 
 logging:
   config: classpath:logback/logback-spring.xml
-
+  web:
+    exclusions:
+      - actuator
+      - swagger
+      - api-docs
 server:
   port: '${contour.http-port}'
