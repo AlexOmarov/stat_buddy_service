@@ -22,9 +22,12 @@ dependencies {
     detektPlugins(libs.detekt.ktlint)
 
     implementation(libs.logstash.logback)
+    implementation(libs.snakeyaml) // CVE-2022-1471 in logback logstash transitive lib
+
 
     implementation(libs.reactor.core)
     implementation(libs.hessian)
+    implementation(libs.otel.zipkin)
 
     implementation(libs.spring.starter.webflux)
     implementation(libs.spring.starter.rsocket)
