@@ -1,4 +1,4 @@
-package ru.shedlab.scheduleconstruction.presentation.web.standard
+package ru.berte.statbuddyservice.presentation.web.standard
 
 enum class ResultCode {
     OK, FAILED

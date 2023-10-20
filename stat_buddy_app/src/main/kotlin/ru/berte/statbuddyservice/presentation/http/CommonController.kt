@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import ru.berte.statbuddyservice.application.service.CommonService
 import ru.berte.statbuddyservice.presentation.web.dto.Actor
-import ru.shedlab.scheduleconstruction.presentation.web.standard.ResponseMetadata
-import ru.shedlab.scheduleconstruction.presentation.web.standard.ResultCode
+import ru.berte.statbuddyservice.presentation.web.standard.ResponseMetadata
+import ru.berte.statbuddyservice.presentation.web.standard.ResultCode
 import ru.shedlab.scheduleconstruction.presentation.web.standard.StandardResponse
 
 @RestController

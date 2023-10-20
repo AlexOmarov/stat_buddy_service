@@ -1,4 +1,4 @@
-package ru.shedlab.scheduleconstruction.presentation.web.standard
+package ru.berte.statbuddyservice.presentation.web.standard
 
 import io.swagger.v3.oas.annotations.media.Schema
 
