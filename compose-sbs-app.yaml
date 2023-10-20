@@ -7,6 +7,7 @@ services:
     environment:
       - 'spring.profiles.active=dev'
       - 'DB_HOST=postgres'
+      - 'LOGSTASH_HOST=logstash:5046'
       - 'ZIPKIN_HOST=http://zipkin:9411/api/v2/spans'
     ports:
       - "8080:8080"
@@ -14,6 +15,9 @@ services:
       monitoring:
         aliases:
           - app
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
   postgres:
     image: 'postgres:latest'
     environment:
