@@ -5,7 +5,7 @@ services:
     depends_on: [postgres]
     container_name: stat_buddy_service
     environment:
-      - 'spring.profiles.active=dev'
+      - 'spring.profiles.active=prod'
       - 'DB_HOST=postgres'
       - 'LOGSTASH_HOST=logstash:5046'
       - 'ZIPKIN_HOST=http://zipkin:9411/api/v2/spans'
@@ -15,9 +15,6 @@ services:
       monitoring:
         aliases:
           - app
-    labels:
-      collect_logs_with_filebeat: "true"
-      decode_log_event_to_json_object: "true"
   postgres:
     image: 'postgres:latest'
     environment:
